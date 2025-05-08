@@ -13,13 +13,19 @@ export function App() {
 
   return (
     <div className={style.container}>
-      <Header current={5} max={10} onRestart={handleRestartGame} />
-      <Tip tip="Biblioteca para criar interfaces Web com Javascript." />
-      <Letter value="R" />
-      <Letter value="E" />
-      <Letter value="A" />
-      <Letter value="C" />
-      <Letter value="T" />
+      <main>
+        <Header current={5} max={10} onRestart={handleRestartGame} />
+
+        <Tip tip="Biblioteca para criar interfaces Web com Javascript." />
+
+        <div className={style.word}>
+          <Letter value="R" />
+          <Letter value="E" />
+          <Letter value="A" />
+          <Letter value="C" />
+          <Letter value="T" />
+        </div>
+      </main>
     </div>
   );
 }
