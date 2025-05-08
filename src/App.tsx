@@ -1,8 +1,11 @@
+import { Header } from "./components/Header";
+
+import style from "./app.module.css";
+
 export function App() {
   return (
-    <div>
-      <h1>Hello World!</h1>
-      <button>Teste</button>
+    <div className={style.container}>
+      <Header />
     </div>
   );
 }
