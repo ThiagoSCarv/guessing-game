@@ -1,6 +1,10 @@
+import style from "./app.module.css";
+
 import { Header } from "./components/Header";
 
-import style from "./app.module.css";
+import { Tip } from "./components/Tip";
+
+import { Letter } from "./components/Letter";
 
 export function App() {
   function handleRestartGame() {
@@ -10,6 +14,12 @@ export function App() {
   return (
     <div className={style.container}>
       <Header current={5} max={10} onRestart={handleRestartGame} />
+      <Tip tip="Biblioteca para criar interfaces Web com Javascript." />
+      <Letter value="R" />
+      <Letter value="E" />
+      <Letter value="A" />
+      <Letter value="C" />
+      <Letter value="T" />
     </div>
   );
 }
