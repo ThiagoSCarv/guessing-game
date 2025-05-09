@@ -3,6 +3,7 @@ import style from "./app.module.css";
 import { useEffect, useState } from "react";
 
 import { WORDS } from "./utils/words";
+import type { LettersUsedProps } from "./components/LettersUsed";
 import type { Challenge } from "./utils/words";
 import { Input } from "./components/Input";
 import { Button } from "./components/Button";
@@ -13,6 +14,7 @@ import { LettersUsed } from "./components/LettersUsed";
 
 export function App() {
   const [attempts, setAttempts] = useState(0);
+  const [lettersUsed, setLettersUsed] = useState<LettersUsedProps[]>([]);
   const [letter, setLetter] = useState("");
   const [challenge, setChallenge] = useState<Challenge | null>(null);
 
@@ -46,7 +48,7 @@ export function App() {
 
         <div className={style.word}>
           {challenge.word.split("").map(() => (
-            <Letter value="R" />
+            <Letter value="" />
           ))}
         </div>
 
@@ -57,7 +59,7 @@ export function App() {
           <Button title="Confirmar" />
         </div>
 
-        <LettersUsed />
+        <LettersUsed data={lettersUsed} />
       </main>
     </div>
   );
