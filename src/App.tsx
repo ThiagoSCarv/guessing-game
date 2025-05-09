@@ -29,6 +29,14 @@ export function App() {
     setLetter("");
   }
 
+  useEffect(() => {
+    startGame();
+  }, []);
+
+  if (!challenge) {
+    return;
+  }
+
   return (
     <div className={style.container}>
       <main>
@@ -37,11 +45,9 @@ export function App() {
         <Tip tip="Biblioteca para criar interfaces Web com Javascript." />
 
         <div className={style.word}>
-          <Letter value="R" />
-          <Letter value="E" />
-          <Letter value="A" />
-          <Letter value="C" />
-          <Letter value="T" />
+          {challenge.word.split("").map(() => (
+            <Letter value="R" />
+          ))}
         </div>
 
         <h4>Palpite</h4>
