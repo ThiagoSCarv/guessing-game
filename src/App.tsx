@@ -14,7 +14,6 @@ import { LettersUsed } from "./components/LettersUsed";
 
 export function App() {
   const [score, setScore] = useState(0);
-  const [attempts, setAttempts] = useState(0);
   const [lettersUsed, setLettersUsed] = useState<LettersUsedProps[]>([]);
   const [letter, setLetter] = useState("");
   const [challenge, setChallenge] = useState<Challenge | null>(null);
@@ -63,8 +62,9 @@ export function App() {
     const randomWord = WORDS[index];
     setChallenge(randomWord);
 
-    setAttempts(0);
+    setScore(0);
     setLetter("");
+    setLettersUsed([]);
   }
 
   useEffect(() => {
@@ -78,14 +78,24 @@ export function App() {
   return (
     <div className={style.container}>
       <main>
-        <Header current={attempts} max={10} onRestart={handleRestartGame} />
+        <Header current={score} max={10} onRestart={handleRestartGame} />
 
         <Tip tip={challenge.tip} />
 
         <div className={style.word}>
-          {challenge.word.split("").map(() => (
-            <Letter value="" />
-          ))}
+          {challenge.word.split("").map((letter, index) => {
+            const letterUsed = lettersUsed.find(
+              (used) => used.value.toUpperCase() === letter.toUpperCase()
+            );
+
+            return (
+              <Letter
+                key={index}
+                value={letterUsed?.value}
+                color={letterUsed?.correct ? "correct" : "default"}
+              />
+            );
+          })}
         </div>
 
         <h4>Palpite</h4>
